@@ -1,0 +1,10 @@
+deployment/
+package.xml
+OQL Mapper.mpr.lock
+OQLMapper.launch
+.project
+javasource/mxmodelreflection/proxies/MxObjectEnum.java
+javasource/oqlmapper/proxies/
+javasource/mxmodelreflection/proxies/
+javasource/system/proxies/
+javasource/administration/proxies/
