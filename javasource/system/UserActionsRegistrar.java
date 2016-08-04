@@ -42,6 +42,7 @@ public class UserActionsRegistrar implements EventHandler
 			component.actionRegistry().registerUserAction(mxmodelreflection.actions.SyncObjects.class);
 			component.actionRegistry().registerUserAction(mxmodelreflection.actions.ValidateTokensInMessage.class);
 			component.actionRegistry().registerUserAction(oqlmapper.actions.ExecuteOQLQuery.class);
+			component.actionRegistry().registerUserAction(oqlmapper.actions.ExecuteOQLQuery_ContextObject.class);
 			component.actionRegistry().registerUserAction(oqlmapper.actions.LoadInMemory.class);
 			component.actionRegistry().registerUserAction(oqlmapper.actions.ObjectIdToLong.class);
 			component.actionRegistry().registerUserAction(system.actions.VerifyPassword.class);
