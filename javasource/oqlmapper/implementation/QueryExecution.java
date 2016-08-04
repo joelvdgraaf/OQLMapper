@@ -2,11 +2,10 @@ package oqlmapper.implementation;
 
 import java.util.Date;
 import java.util.HashMap;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-
-import javax.swing.Icon;
 
 import com.mendix.core.Core;
 import com.mendix.core.CoreException;
@@ -18,16 +17,18 @@ import com.mendix.systemwideinterfaces.core.IContext;
 import com.mendix.systemwideinterfaces.core.IMendixIdentifier;
 import com.mendix.systemwideinterfaces.core.IMendixObject;
 
-import scala.languageFeature.implicitConversions;
 
 public class QueryExecution {
 	private static ILogNode log = Core.getLogger("OQLMapper");
 	private static HashMap<String, Template> templateMap = new HashMap<String, Template>();
+	
 	private Template template;
 	private String OQLQuery;
 	private IMendixObject parentObj;
 	private boolean parentObjOwnerAssociation;
 
+	
+	
 	public static void addTemplate(String templateName, Template template) {
 		templateMap.put(templateName, template);
 		log.info("The template with name '" + templateName + "' has been added in the memory.");
@@ -36,7 +37,7 @@ public class QueryExecution {
 	public static Template getTemplate(String templateName) {
 		return templateMap.get(templateName);
 	}
-
+	
 	public QueryExecution(String templateName, String OQLQuery, IMendixObject parentObj) throws CoreException {
 		this.template = templateMap.get(templateName);
 		if (this.template != null) {
@@ -67,8 +68,13 @@ public class QueryExecution {
 	public boolean executeQuery(IContext context, IMendixObject contextObj) throws CoreException {
 		if (contextObj != null) {
 			log.trace("Replacing contextobject tokens");
+			
+			if (this.template.getContextToken() != null){
+				this.OQLQuery = this.OQLQuery.replace(this.template.getContextToken(), Long.toString(contextObj.getId().toLong()));
+			}
 
 			this.OQLQuery = this.OQLQuery.replace("'[%ContextObjectID%]'", Long.toString(contextObj.getId().toLong()));
+			
 		} else {
 			log.trace("No contextobject given");
 		}
@@ -113,6 +119,9 @@ public class QueryExecution {
 						break;
 					case _Float:
 						rowObject.setValue(context, map.getAttributeName(), (Double) value);
+						break;
+					case Decimal:
+						rowObject.setValue(context, map.getAttributeName(), value);
 						break;
 					case _Boolean:
 						rowObject.setValue(context, map.getAttributeName(), (Boolean) value);

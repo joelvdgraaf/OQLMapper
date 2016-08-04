@@ -10,14 +10,16 @@ public class Template
 	private String Association;
 	private String RowObject;
 	private List<Mapping> mappingList;
+	private String contextToken;
 	
-	public Template(String OQLQuery, String ParentObject, String association, String rowObject)
+	public Template(String OQLQuery, String ParentObject, String association, String rowObject, String contextToken)
 	{		
 		this.OQLQuery = OQLQuery;
 		this.ParentObject = ParentObject;
 		this.Association = association;
 		this.RowObject = rowObject;
 		this.mappingList = new ArrayList<Mapping>();
+		this.contextToken = contextToken;
 	}
 	
 	public void addMapping(Mapping mapping)
@@ -49,4 +51,8 @@ public class Template
 	{
 		return mappingList;
 	}	
+	
+	public String getContextToken(){
+		return this.contextToken;
+	}
 }

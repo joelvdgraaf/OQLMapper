@@ -11,9 +11,7 @@ package oqlmapper.actions;
 
 import com.mendix.systemwideinterfaces.core.IContext;
 import com.mendix.webui.CustomJavaAction;
-
 import oqlmapper.implementation.QueryExecution;
-
 import com.mendix.systemwideinterfaces.core.IMendixObject;
 
 /**
