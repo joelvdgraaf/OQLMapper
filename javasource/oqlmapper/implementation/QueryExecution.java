@@ -121,7 +121,7 @@ public class QueryExecution {
 						rowObject.setValue(context, map.getAttributeName(), (Double) value);
 						break;
 					case Decimal:
-						rowObject.setValue(context, map.getAttributeName(), value);
+						rowObject.setValue(context, map.getAttributeName(), (BigDecimal) value);
 						break;
 					case _Boolean:
 						rowObject.setValue(context, map.getAttributeName(), (Boolean) value);
