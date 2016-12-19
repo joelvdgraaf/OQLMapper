@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.example.org/OQL/" targetNamespace="http://www.example.org/OQL/">
+    <element name="OQL_Templates" type="tns:OQLTemplates"></element>
+    
+    <complexType name="OQLTemplates">
+    	<sequence>
+    		<element name="OQLTemplate" type="tns:OQLTemplate" maxOccurs="unbounded" minOccurs="0"></element>
+    	</sequence>
+    </complexType>
+
+    <complexType name="OQLTemplate">
+    	<sequence>
+    		<element name="Name" type="string"></element>
+    		<element name="Statement" type="string"></element>
+    		<element name="OQLMapping" type="tns:OQLMapping"
+    			maxOccurs="unbounded" minOccurs="0">
+    		</element>
+    		<element name="ParentObjectType"
+    			type="tns:ParentObjectType">
+    		</element>
+    		<element name="RowObjectType" type="tns:RowObjectType"></element>
+    		<element name="RowObjectReference"
+    			type="tns:RowObjectReference">
+    		</element>
+            <element name="ContextObjectToken" type="string"></element>
+    	</sequence>
+    </complexType>
+
+    <complexType name="OQLMapping">
+    	<sequence>
+    		<element name="AliasName" type="string"></element>
+    		<element name="ParserType" type="string"></element>
+    		<element name="MxObjectMember" type="tns:MxObjectMember"></element>
+    	</sequence>
+    </complexType>
+
+    <complexType name="MxObjectMember">
+    	<sequence>
+    		<element name="CompleteName" type="string"></element>
+    	</sequence>
+    </complexType>
+
+    <complexType name="ParentObjectType">
+    	<sequence>
+    		<element name="CompleteName" type="string"></element>
+    	</sequence>
+    </complexType>
+
+    <complexType name="RowObjectType">
+    	<sequence>
+    		<element name="CompleteName" type="string"></element>
+    	</sequence>
+    </complexType>
+
+    <complexType name="RowObjectReference">
+    	<sequence>
+    		<element name="CompleteName" type="string"></element>
+    	</sequence>
+    </complexType>
+</schema>

@@ -3,6 +3,12 @@ A technical Mendix module to integrate OQL queries within your microflows by eas
 
 OQL in Mendix is a powerful language to retrieve data from your database based your own developed queries. In the Mendix Platform is OQL only used in reporting, which is a pitty. This module will let you use OQL within your microflows based on a simple Java action and the MxModelReflection module.
 
+# Features
+- Execute OQL query from java action and use the created objects in a MF
+- Use a context object and replace a token (eg. $Object) by the Object/ID
+- Import / Export templates to XML
+- Import XML from Microflow on startup (useful for production environments)
+
 # Configuration
 In the module you configure mapping templates. A template has the OQL query as text saved, which means the module will not do any checks on that query. The advice is to create the query in a DataSet in the modeler and copy the result to the module. A template needs a parent object, reference and row object.
 - Parent object type: The object type that will given to the Java action to attach each row of the result.

@@ -48,7 +48,8 @@ public class LoadInMemory extends CustomJavaAction<Boolean>
 		Template template = new Template(this.QueryTemplate.getOQLStatement(), 
 				this.QueryTemplate.getOQLTemplate_ParentObjectType().getCompleteName(), 
 				this.QueryTemplate.getOQLTemplate_MxObjectReference().getCompleteName(), 
-				this.QueryTemplate.getOQLTemplate_RowObjectType().getCompleteName());		
+				this.QueryTemplate.getOQLTemplate_RowObjectType().getCompleteName(),
+				this.QueryTemplate.getContextObjectDescription());		
 		for(OQLMapping map : this.MappingList)
 		{
 			template.addMapping(new Mapping(map.getAliasName(), map.getOQLMapping_MxObjectMember().getAttributeName(), map.getParserType()));
